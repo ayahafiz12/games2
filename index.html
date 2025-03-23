@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لعبة تعليمية - الصفحة الرئيسية</title>
+
+    <!-- إضافة خطوط Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@700&family=Changa:wght@600&display=swap" rel="stylesheet">
+
+    <!-- إضافة Font Awesome للأيقونات -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        /* تصميم عام للصفحة */
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom, #f0f8ff, #b3e5fc);
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        /* تصميم الرأس */
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px;
+            display: flex; /* لجعل العناصر داخل الرأس مرتبة بشكل أفقي */
+            align-items: center; /* لمحاذاة العناصر عموديًا */
+            justify-content: space-between; /* لتوزيع العناصر بالتساوي */
+        }
+
+        /* تصميم الشعارين */
+        .logo-left, .logo-right {
+            width: 100px; /* حجم الشعار */
+            height: auto;
+        }
+        .logo-left {
+            margin-left: 20px; /* مسافة من الحافة اليسرى */
+        }
+        .logo-right {
+            margin-right: 20px; /* مسافة من الحافة اليمنى */
+        }
+
+        /* تصميم العنوان الرئيسي */
+        header h1 {
+            font-family: 'Tajawal', sans-serif; /* خط جميل */
+            font-size: 48px;
+            color: #fff;
+            position: relative; /* لتمكين إضافة المؤثرات داخل العنوان */
+            text-shadow: 3px 3px 6px #000;
+            animation: bounce 2s infinite;
+            margin: 0; /* لإزالة الهامش الزائد */
+            flex-grow: 1; /* لجعل العنوان يأخذ المساحة المتبقية بين الشعارين */
+            text-align: center; /* لتوسيط النص */
+        }
+
+        /* تصميم المؤثرات البصرية داخل العنوان */
+        .sparkle {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #ffeb3b;
+            border-radius: 50%;
+            animation: sparkle-animation 2s infinite;
+        }
+
+        /* مواقع المؤثرات داخل العنوان */
+        header h1 .sparkle:nth-child(1) {
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        header h1 .sparkle:nth-child(2) {
+            top: 50%;
+            left: 10%;
+            transform: translateY(-50%);
+        }
+        header h1 .sparkle:nth-child(3) {
+            top: 50%;
+            right: 10%;
+            transform: translateY(-50%);
+        }
+        header h1 .sparkle:nth-child(4) {
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* تصميم التفاعل البصري الجديد */
+        .interactive-section {
+            font-family: 'Changa', sans-serif;
+            font-size: 36px;
+            color: #860824;
+            margin-top: 30px;
+            position: relative;
+            animation: fadeInOut 4s infinite ease-in-out;
+        }
+        .interactive-section i {
+            font-size: 48px;
+            margin: 0 10px;
+            animation: floatIcons 3s infinite ease-in-out;
+        }
+
+        /* تصميم الأزرار */
+        .grade-button {
+            background-color: #ff9800;
+            color: white;
+            padding: 20px 40px;
+            margin: 15px;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 20px;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        .grade-button:hover {
+            background-color: #e65100;
+            transform: scale(1.1);
+        }
+
+        /* تصميم الشخصيات الكرتونية */
+        .character {
+            position: absolute;
+            bottom: 20px;
+            width: 150px;
+            animation: float 3s infinite ease-in-out;
+        }
+        .character-right {
+            right: 20px; /* الصورة على اليمين */
+        }
+        .character-left {
+            left: 20px; /* الصورة على اليسار */
+        }
+
+        /* تصميم الفوتر */
+        footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            font-size: 14px;
+        }
+
+        /* تصميم أيقونة الصوت */
+        .sound-icon {
+            position: absolute;
+            bottom: 50px; /* أعلى قليلاً من الشخصيات */
+            left: 50%; /* في المنتصف */
+            transform: translateX(-50%); /* مركز الأيقونة */
+            font-size: 40px; /* حجم كبير للأيقونة */
+            color: #4CAF50; /* لون السماعة */
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        .sound-icon:hover {
+            color: #e65100; /* تغيير اللون عند التحويم */
+        }
+
+        /* الحركات */
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @keyframes sparkle-animation {
+            0%, 100% {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes fadeInOut {
+            0%, 100% {
+                opacity: 0.5;
+            }
+            50% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes floatIcons {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- الرأس -->
+    <header>
+        <!-- الشعار الأيسر -->
+        <img src="picture/logo2.png" alt="شعار اللعبة" class="logo-left">
+
+        <!-- العنوان الرئيسي -->
+        <h1>
+            مرحبًا بك في لعبة المدرسة الذكية!
+            <!-- المؤثرات البصرية داخل العنوان -->
+            <div class="sparkle"></div>
+            <div class="sparkle"></div>
+            <div class="sparkle"></div>
+            <div class="sparkle"></div>
+        </h1>
+
+        <!-- الشعار الأيمن -->
+        <img src="picture/logo1.png" alt="شعار اللعبة" class="logo-right">
+    </header>
+
+    <!-- التفاعل البصري الجديد -->
+    <div class="interactive-section">
+        <i class="fas fa-book-open"></i>
+        <span>استعد للتعلم!</span>
+        <i class="fas fa-pencil-alt"></i>
+    </div>
+
+    <!-- أزرار الصفوف -->
+    <div style="margin-top: 50px;">
+        <button class="grade-button" onclick="openGradePage('grade1.html')">الصف الأول الإبتدائي</button>
+        <button class="grade-button" onclick="openGradePage('grade2.html')">الصف الثاني الإبتدائي</button>
+        <button class="grade-button" onclick="openGradePage('grade3.html')">الصف الثالث الإبتدائي</button>
+        <button class="grade-button" onclick="openGradePage('grade4.html')">الصف الرابع الإبتدائي</button>
+        <button class="grade-button" onclick="openGradePage('grade5.html')">الصف الخامس الإبتدائي</button>
+        <button class="grade-button" onclick="openGradePage('grade6.html')">الصف السادس الإبتدائي</button>
+    </div>
+
+    <!-- الشخصيات الكرتونية -->
+    <img src="picture/boy.png" alt="شخصية كرتونية يمين" class="character character-right">
+    <img src="picture/girl.png" alt="شخصية كرتونية يسار" class="character character-left">
+
+    <!-- الفوتر -->
+    <footer>
+        &copy; تحت إشراف د. سهير & 2025 لعبة المدرسة الذكية
+    </footer>
+
+    <!-- ملفات الصوت -->
+    <audio id="page-sound" src="sounds/ring1.mp3" preload="auto"></audio>
+
+    <!-- أيقونة الصوت -->
+    <i class="fas fa-volume-up sound-icon" id="sound-icon" onclick="toggleSound()"></i>
+
+    <script>
+        // تشغيل صوت الصفحة عند التحميل
+        window.onload = function() {
+            const pageSound = document.getElementById('page-sound');
+            try {
+                pageSound.play();
+            } catch (error) {
+                console.error("تعذر تشغيل الصوت التلقائي:", error);
+            }
+        };
+
+        // دالة للتحكم في تشغيل وإيقاف الصوت
+        let isPlaying = true; // متغير لمعرفة حالة الصوت
+        function toggleSound() {
+            const pageSound = document.getElementById('page-sound');
+            const soundIcon = document.getElementById('sound-icon');
+
+            if (isPlaying) {
+                pageSound.pause(); // إيقاف الصوت
+                soundIcon.classList.remove('fa-volume-up'); // تغيير أيقونة الصوت إلى مكتوم
+                soundIcon.classList.add('fa-volume-mute');
+            } else {
+                pageSound.play(); // تشغيل الصوت
+                soundIcon.classList.remove('fa-volume-mute'); // تغيير أيقونة الصوت إلى مشغل
+                soundIcon.classList.add('fa-volume-up');
+            }
+
+            isPlaying = !isPlaying; // تبديل الحالة
+        }
+
+        // دالة لفتح صفحة الصفوف
+        function openGradePage(pageName) {
+            // تشغيل الصوت المرتبط بالصف
+            const soundFile = pageName.replace('.html', '.mp3'); // استبدال الامتداد
+            playSound(`sounds/${soundFile}`);
+
+            // فتح الصفحة بعد ثانية واحدة (لتوفير وقت لتشغيل الصوت)
+            setTimeout(() => {
+                window.location.href = pageName;
+            }, 1000); // 1000 ميلي ثانية = 1 ثانية
+        }
+
+        // دالة لتشغيل صوت الزر
+        function playSound(soundFile) {
+            const audio = new Audio(soundFile);
+            audio.play();
+        }
+    </script>
+
+</body>
+</html>

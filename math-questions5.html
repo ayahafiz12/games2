@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أسئلة الرياضيات</title>
+    <style>
+        /* نفس الكود الخاص بالتصميم */
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom, #f0f8ff, #b3e5fc);
+            text-align: center;
+            padding: 50px;
+        }
+        h1 {
+            color: #333;
+            font-size: 36px;
+        }
+        .question {
+            background-color: #fff;
+            padding: 20px;
+            margin: 20px auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .result {
+            font-size: 20px;
+            margin-top: 20px;
+            color: green;
+        }
+        .back-button {
+            background-color: #ff5722;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .back-button:hover {
+            background-color: #e64a19;
+        }
+    </style>
+</head>
+<body>
+    <h1>أسئلة الرياضيات</h1>
+    
+    <!-- السؤال الأول -->
+    <div class="question">
+        <p>السؤال 1: ما هو ناتج 7 + 5؟</p>
+        <button onclick="checkAnswer('answer1', true)">12</button>
+        <button onclick="checkAnswer('answer1', false)">10</button>
+        <p id="answer1"></p>
+    </div>
+
+    <!-- السؤال الثاني -->
+    <div class="question">
+        <p>السؤال 2: كم عدد الأيام في الأسبوع؟</p>
+        <input type="number" id="fill-in-answer" placeholder="أكتب إجابتك هنا">
+        <button onclick="checkFillIn()">تحقق</button>
+        <p id="fill-in-result"></p>
+    </div>
+
+    <!-- زر العودة -->
+    <br><br>
+    <button class="back-button" onclick="location.href='grade5.html'">العودة إلى الصفحة السابقة</button>
+
+    <script>
+        function checkAnswer(elementId, isCorrect) {
+            const resultElement = document.getElementById(elementId);
+            if (isCorrect) {
+                resultElement.textContent = "إجابة صحيحة 👍";
+                resultElement.style.color = "green";
+            } else {
+                resultElement.textContent = "إجابة خاطئة ❌ حاول مرة أخرى!";
+                resultElement.style.color = "red";
+            }
+        }
+
+        function checkFillIn() {
+            const answer = parseInt(document.getElementById('fill-in-answer').value.trim());
+            const resultElement = document.getElementById('fill-in-result');
+            if (answer === 7) {
+                resultElement.textContent = "إجابة صحيحة 👍";
+                resultElement.style.color = "green";
+            } else {
+                resultElement.textContent = "إجابة خاطئة ❌ الإجابة الصحيحة هي '7'";
+                resultElement.style.color = "red";
+            }
+        }
+    </script>
+</body>
+</html>

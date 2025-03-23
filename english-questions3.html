@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English Questions</title>
+    <style>
+        /* نفس الكود الخاص بالتصميم */
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom, #f0f8ff, #b3e5fc);
+            text-align: center;
+            padding: 50px;
+        }
+        h1 {
+            color: #333;
+            font-size: 36px;
+        }
+        .question {
+            background-color: #fff;
+            padding: 20px;
+            margin: 20px auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .result {
+            font-size: 20px;
+            margin-top: 20px;
+            color: green;
+        }
+        .back-button {
+            background-color: #ff5722;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .back-button:hover {
+            background-color: #e64a19;
+        }
+    </style>
+</head>
+<body>
+    <h1>English Questions</h1>
+    
+    <!-- السؤال الأول -->
+    <div class="question">
+        <p>Question 1: What is the opposite of "big"?</p>
+        <button onclick="checkAnswer('answer1', true)">Small</button>
+        <button onclick="checkAnswer('answer1', false)">Large</button>
+        <p id="answer1"></p>
+    </div>
+
+    <!-- السؤال الثاني -->
+    <div class="question">
+        <p>Question 2: Fill in the blank: The cat is _____ the table.</p>
+        <input type="text" id="fill-in-answer" placeholder="Write your answer here">
+        <button onclick="checkFillIn()">Check</button>
+        <p id="fill-in-result"></p>
+    </div>
+
+    <!-- زر العودة -->
+    <br><br>
+    <button class="back-button" onclick="location.href='grade3.html'">Back to Previous Page</button>
+
+    <script>
+        function checkAnswer(elementId, isCorrect) {
+            const resultElement = document.getElementById(elementId);
+            if (isCorrect) {
+                resultElement.textContent = "Correct Answer 👍";
+                resultElement.style.color = "green";
+            } else {
+                resultElement.textContent = "Wrong Answer ❌ Try again!";
+                resultElement.style.color = "red";
+            }
+        }
+
+        function checkFillIn() {
+            const answer = document.getElementById('fill-in-answer').value.trim().toLowerCase();
+            const resultElement = document.getElementById('fill-in-result');
+            if (answer === "on") {
+                resultElement.textContent = "Correct Answer 👍";
+                resultElement.style.color = "green";
+            } else {
+                resultElement.textContent = "Wrong Answer ❌ The correct answer is 'on'";
+                resultElement.style.color = "red";
+            }
+        }
+    </script>
+</body>
+</html>
